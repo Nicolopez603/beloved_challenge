@@ -17,6 +17,8 @@ describe('Registration', () => {
         todoistRegistration.elements.passwordInput().type(randomPassword)
         todoistRegistration.elements.submitButton().click()
 
+        todoistRegistration.elements.submitButton().click()
+
         // First make the file input visible
         todoistRegistration.elements
             .fileInput()
@@ -33,22 +35,33 @@ describe('Registration', () => {
             .fileInput()
             .invoke('attr', 'hidden', 'hidden')
 
-        todoistRegistration.elements.typeName().type('Nicolas')
+        todoistRegistration.elements.typeName().type('Nicolas', { log: false })
         todoistRegistration.elements.swipeButton().click()
         todoistRegistration.elements.confirmButton().click()
-        cy.get('#element-5').select(2)
+        todoistRegistration.elements.yourPosition().select(2)
+
         //Boton Continuar
         todoistRegistration.elements.confirmButton().click()
-        cy.get('#element-8').type('jjijasda')
-        cy.get('._7a4dbd5f').click() //Tecnología de la información
-        cy.get('#element-11').select('Tecnología de la información')
-        cy.get('#element-14').select('Tecnología de la información')
-        cy.get('#element-17').select(3)
-        //Boton continuar
+
+        todoistRegistration.elements
+            .nameTeam()
+            .type('beloved-team', { log: false })
+
         todoistRegistration.elements.confirmButton().click()
-        cy.get('._7a4dbd5f').click()
-        cy.get('[label="Omitir por ahora"]').click()
+
+        todoistRegistration.elements
+            .dropdownIndustrySector()
+            .select('Tecnología de la información')
+        todoistRegistration.elements
+            .dropdownProfession()
+            .select('Tecnología de la información')
+        todoistRegistration.elements.dropdownAmountOrganization().select(3)
+        todoistRegistration.elements.confirmButton().click()
+        todoistRegistration.elements.confirmButton().click()
+        todoistRegistration.elements.skipButton().click()
+
         cy.url('include', '/app/today')
-        cy.get('.EnOQGHT').should('be.visible')
+        //Verificar que se encuentre en la pantalla de hoy
+        cy.title().should('include', 'Hoy')
     })
 })

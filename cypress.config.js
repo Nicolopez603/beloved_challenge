@@ -29,5 +29,8 @@ module.exports = defineConfig({
                 timestamp: 'mmddyyyy_HHMMss',
             },
         },
+        chromeWebSecurity: false,
+        defaultCommandTimeout: 8000,
+        pageLoadTimeout: 30000,
     },
 })

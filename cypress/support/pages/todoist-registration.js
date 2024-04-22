@@ -9,6 +9,12 @@ export default class TodoistRegistrationPage {
         fileInput: () => cy.get('input[type="file"][name="photo"]'),
         swipeButton: () => cy.get('._5af09fb5'),
         confirmButton: () => cy.contains('Continuar'),
+        skipButton: () => cy.get('[label="Omitir por ahora"]'),
+        dropdownIndustrySector: () => cy.get('#element-11'),
+        dropdownProfession: () => cy.get('#element-14'),
+        dropdownAmountOrganization: () => cy.get('#element-17'),
+        nameTeam: () => cy.get('#element-8'),
+        yourPosition: () => cy.get('#element-5'),
     }
 
     visit() {
