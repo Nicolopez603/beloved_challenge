@@ -4,9 +4,7 @@
     "description": "this is a challenge for the company beloved-robot",
     "main": "index.js",
     "scripts": {
-        "test": "test",
-        "cypress:open": "cypress open",
-        "cypress:run": "cypress run"
+        "test": "test"
     },
     "keywords": [
         "challenge",
