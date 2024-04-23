@@ -4,6 +4,8 @@
     "description": "this is a challenge for the company beloved-robot",
     "main": "index.js",
     "scripts": {
+        "lint": "eslint cypress/**/*.js && eslint cypress.config.js --ignore-pattern 'cypress/screenshots/*'",
+        "lint-fix": "eslint 'cypress/**/*.js' --fix --ignore-pattern 'cypress/screenshots/*'",
         "test": "test",
         "ui-regression-chrome": "cypress run --browser chrome --spec 'cypress/e2e/web/*.cy.js'",
         "ui-regression-electron": "cypress run --browser electron --spec 'cypress/e2e/web/*.cy.js'",
@@ -27,6 +29,8 @@
         "cypress": "^13.8.0",
         "cypress-multi-reporters": "^1.6.4",
         "dotenv": "^16.4.5",
+        "eslint": "^8.43.0",
+        "eslint-plugin-cypress": "^3.0.0",
         "mochawesome": "^7.1.3",
         "mochawesome-merge": "^4.3.0",
         "mochawesome-report-generator": "^6.2.0"
