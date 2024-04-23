@@ -2,6 +2,9 @@ const { defineConfig } = require('cypress')
 require('dotenv').config()
 
 module.exports = defineConfig({
+    chromeWebSecurity: false,
+    defaultCommandTimeout: 8000,
+    pageLoadTimeout: 30000,
     e2e: {
         supportFile: 'cypress/support/e2e.js',
         setupNodeEvents(on, config) {
@@ -29,8 +32,5 @@ module.exports = defineConfig({
                 timestamp: 'mmddyyyy_HHMMss',
             },
         },
-        chromeWebSecurity: false,
-        defaultCommandTimeout: 8000,
-        pageLoadTimeout: 30000,
     },
 })

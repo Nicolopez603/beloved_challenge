@@ -44,7 +44,7 @@ describe('Registration', () => {
     it('Invalid Login - Without password and Email', () => {
         todoistRegistration.invalidRegistrationWithoutPasswordAndEmail()
 
-        cy.get('#element-5').should(
+        cy.get('._8f5b5f2b').should(
             'contain.text',
             'Introduce una dirección de email válida.'
         )
