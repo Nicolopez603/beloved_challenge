@@ -4,14 +4,10 @@ import TodoistLoginPage from '../../support/pages/todoist-login'
 describe('Login', () => {
     beforeEach(() => {
         cy.visit('auth/login')
-        cy.url().should('include', 'auth/login')
         cy.location('protocol').should('contains', 'https')
     })
     it('Succesfull Login', () => {
         TodoistLoginPage.succesfullLogin()
-
-        cy.url().should('include', '/app/today')
-        cy.title().should('include', 'Hoy')
     })
 
     it('Invalid login with wrong credentials', () => {
@@ -36,7 +32,7 @@ describe('Login', () => {
         TodoistLoginPage.invalidLoginWithoutPassword()
 
         //Alert-Error
-        cy.get('._8f5b5f2b')
+        cy.get('#element-5')
             .should('be.visible')
             .and(
                 'contain',

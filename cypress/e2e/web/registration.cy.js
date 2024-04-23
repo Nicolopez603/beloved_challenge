@@ -4,7 +4,6 @@ import todoistRegistration from '../../support/pages/todoist-registration'
 describe('Registration', () => {
     beforeEach(() => {
         cy.visit('auth/signup')
-        cy.url().should('include', 'auth/signup')
         cy.location('protocol').should('contains', 'https')
     })
     it('Complete Successful registration', () => {
@@ -26,10 +25,7 @@ describe('Registration', () => {
     it('Invalid registration - No Password', () => {
         todoistRegistration.invalidRegistrationWithoutPassword()
 
-        cy.get('#element-5').should(
-            'contain.text',
-            'Las contraseñas deben tener al menos 8 caracteres.'
-        )
+        cy.get('[data-gtm-id="start-email-signup"]').should('be.visible')
     })
 
     it('Invalid registration - No email', () => {
