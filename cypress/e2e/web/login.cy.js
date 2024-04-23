@@ -2,7 +2,7 @@
 
 describe('Login', () => {
     it('Succesfull Login', () => {
-        cy.visit('/auth/login')
+        cy.visit('auth/login')
 
         cy.get('#element-0').type('elpepecoin@gmail.com')
         cy.get('#element-3').type('elpepecoin998')
@@ -34,7 +34,7 @@ describe('Login', () => {
             .and('contain', 'Introduce una dirección de email válida.')
     })
 
-    it.only('Invalid Login - No password', () => {
+    it('Invalid Login - No password', () => {
         cy.visit('/auth/login')
 
         cy.get('#element-0').type('elpepecoin3@gmail.com')

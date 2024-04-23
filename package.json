@@ -6,8 +6,13 @@
     "scripts": {
         "test": "test",
         "ui-regression-chrome": "cypress run --browser chrome --spec 'cypress/e2e/web/*.cy.js'",
+        "ui-regression-electron": "cypress run --browser electron --spec 'cypress/e2e/web/*.cy.js'",
         "api-regression-chrome": "cypress run --browser chrome --spec 'cypress/e2e/api/*.cy.js'",
-        "e2e-regression": "npm run ui-regression && npm run api-regression"
+        "api-regression-electron": "cypress run --browser electron --spec 'cypress/e2e/api/*.cy.js'",
+        "e2e-regression": "npm run ui-regression-chrome && npm run api-regression-chrome && npm run api-regression-electron",
+        "runner-in-prod": "cypress run --browser chrome --spec 'cypress/e2e/web/*.cy.js' --env configFile=cypress.production.json",
+        "runner-in-dev": "cypress run --browser chrome --spec 'cypress/e2e/web/*.cy.js' --env configFile=cypress.development.json",
+        "runner-in-qa": "cypress run --browser chrome --spec 'cypress/e2e/web/*.cy.js' --env configFile=cypress.qa.json"
     },
     "keywords": [
         "challenge",

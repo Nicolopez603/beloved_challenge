@@ -4,7 +4,7 @@ import todoistRegistration from '../../support/pages/todoist-registration'
 
 describe('Registration', () => {
     beforeEach(() => {
-        cy.visit('/auth/signup')
+        cy.visit('auth/signup')
         cy.url().should('include', 'auth/signup')
     })
     it('Register a new user with a profile photo', () => {
