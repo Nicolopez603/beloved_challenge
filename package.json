@@ -5,7 +5,6 @@
     "main": "index.js",
     "scripts": {
         "test": "test",
-        "build": "react-scripts build",
         "ui-regression-chrome": "cypress run --browser chrome --spec 'cypress/e2e/web/*.cy.js'",
         "api-regression-chrome": "cypress run --browser chrome --spec 'cypress/e2e/api/*.cy.js'",
         "e2e-regression": "npm run ui-regression && npm run api-regression"
