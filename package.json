@@ -4,6 +4,7 @@
     "description": "this is a challenge for the company beloved-robot",
     "main": "index.js",
     "scripts": {
+        "env:set": "node -r dotenv/config dotenv_setup.js",
         "test": "test",
         "ui-regression-chrome": "cypress run --browser chrome --spec 'cypress/e2e/web/*.cy.js'",
         "ui-regression-electron": "cypress run --browser electron --spec 'cypress/e2e/web/*.cy.js'",
