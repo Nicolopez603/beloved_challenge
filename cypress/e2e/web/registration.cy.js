@@ -35,20 +35,20 @@ describe('Registration', () => {
             .fileInput()
             .invoke('attr', 'hidden', 'hidden')
 
+        // Confirm information screen
         todoistRegistration.elements.typeName().type('Nicolas', { log: false })
         todoistRegistration.elements.swipeButton().click()
         todoistRegistration.elements.confirmButton().click()
         todoistRegistration.elements.yourPosition().select(2)
-
-        //Boton Continuar
         todoistRegistration.elements.confirmButton().click()
 
+        //Name of the team Screen
         todoistRegistration.elements
             .nameTeam()
             .type('beloved-team', { log: false })
-
         todoistRegistration.elements.confirmButton().click()
 
+        //Screen information about your profile, company, team, etc
         todoistRegistration.elements
             .dropdownIndustrySector()
             .select('Tecnología de la información')
@@ -60,8 +60,10 @@ describe('Registration', () => {
         todoistRegistration.elements.confirmButton().click()
         todoistRegistration.elements.skipButton().click()
 
+        //HomePage User
         cy.url('include', '/app/today')
-        //Verificar que se encuentre en la pantalla de hoy
+
+        //Verify that you are on today's screen
         cy.title().should('include', 'Hoy')
     })
 })
