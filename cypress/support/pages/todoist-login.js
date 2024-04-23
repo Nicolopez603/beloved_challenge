@@ -10,8 +10,12 @@ export default class TodoistLoginPage {
     }
 
     succesfullLogin() {
-        this.elements.emailInput().type(Cypress.env('TODOIST_EMAIL'))
-        this.elements.passwordInput().type(Cypress.env('TODOIST_PASSWORD'))
+        this.elements
+            .emailInput()
+            .type(Cypress.env('TODOIST_EMAIL'), { log: false })
+        this.elements
+            .passwordInput()
+            .type(Cypress.env('TODOIST_PASSWORD'), { log: false })
         this.elements.submitButton().click()
     }
 
@@ -33,6 +37,12 @@ export default class TodoistLoginPage {
 
     invalidLoginWithoutPassword() {
         this.elements.emailInput().type(Cypress.env('TODOIST_INVALID_EMAIL'))
+        this.elements.passwordInput()
+        this.elements.submitButton().click()
+    }
+
+    invalidLoginWithoutPasswordAndEmail() {
+        this.elements.emailInput()
         this.elements.passwordInput()
         this.elements.submitButton().click()
     }

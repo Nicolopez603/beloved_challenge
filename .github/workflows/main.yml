@@ -8,18 +8,21 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: '16.x'
-
-            - name: Set environment variables
-              run: |
-                  npm run env:set
-              env:
-                  CYPRESS_ENV: 'github-action'
-
             - name: Checkout
               uses: actions/checkout@v3
             - name: Install dependencies
-              run: npm ci
-
+              run:
+                  npm ci
+                  # Define environment variables from GitHub Secrets for Cypress
+            - name: Cypress run
+              uses: cypress-io/github-action@v5
+              with:
+                  command: npm run e2e-regression
+              env:
+                  CYPRESS_TODOIST_EMAIL: ${{ secrets.TODOIST_EMAIL }}
+                  CYPRESS_TODOIST_PASSWORD: ${{ secrets.TODOIST_PASSWORD }}
+                  CYPRESS_TODOIST_INVALID_EMAIL: ${{ secrets.TODOIST_INVALID_EMAIL }}
+                  CYPRESS_TODOIST_INVALID_PASSWORD: ${{ secrets.TODOIST_INVALID_PASSWORD }}
             # Install NPM dependencies, cache them correctly
             # and run all Cypress tests
             - name: Cypress run

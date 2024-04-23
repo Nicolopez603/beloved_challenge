@@ -13,7 +13,7 @@ describe('Login', () => {
         cy.title().should('include', 'Hoy')
     })
 
-    it('Invalid Login', () => {
+    it('Invalid login with wrong credentials', () => {
         TodoistLoginPage.invalidLogin()
 
         //Alert-Error
@@ -33,6 +33,18 @@ describe('Login', () => {
 
     it('Invalid Login - No password', () => {
         TodoistLoginPage.invalidLoginWithoutPassword()
+
+        //Alert-Error
+        cy.get('._8f5b5f2b')
+            .should('be.visible')
+            .and(
+                'contain',
+                'Las contraseñas deben tener al menos 8 caracteres.'
+            )
+    })
+
+    it('Invalid Login - Without password and Email ', () => {
+        TodoistLoginPage.invalidLoginWithoutPasswordAndEmail()
 
         //Alert-Error
         cy.get('._8f5b5f2b')
