@@ -8,14 +8,18 @@ jobs:
               uses: actions/setup-node@v3
               with:
                   node-version: '16.x'
-            # Agrega este nuevo paso
+
             - name: Set environment variables
               run: |
                   npm run env:set
               env:
                   CYPRESS_ENV: 'github-action'
+
             - name: Checkout
               uses: actions/checkout@v3
+            - name: Install dependencies
+              run: npm ci
+
             # Install NPM dependencies, cache them correctly
             # and run all Cypress tests
             - name: Cypress run

@@ -9,3 +9,5 @@ cypress/screenshots/
 cypress/videos/
 node_modules/
 reports
+/fixtures/images
+cypress/fixtures/images
