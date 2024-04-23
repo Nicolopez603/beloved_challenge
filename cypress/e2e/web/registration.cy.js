@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import todoistRegistration from '../../support/pages/todoist-registration'
 
-describe('Registration', () => {
+describe('Registration Suite', () => {
     beforeEach(() => {
         cy.visit('auth/signup')
         cy.location('protocol').should('contains', 'https')

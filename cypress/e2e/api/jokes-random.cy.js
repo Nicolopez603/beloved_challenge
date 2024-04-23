@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 describe('Endpoint /jokes/random', () => {
     const statusOK = 200
+    
     it('Get a random joke', () => {
         cy.request('https://api.chucknorris.io/jokes/random')
             .its('status')

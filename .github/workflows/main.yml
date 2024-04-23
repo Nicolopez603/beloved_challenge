@@ -4,10 +4,10 @@ jobs:
     cypress-run:
         runs-on: ubuntu-latest
         steps:
-            - name: Setup Node.js 16.x
+            - name: Setup Node.js 18.x
               uses: actions/setup-node@v3
               with:
-                  node-version: '16.x'
+                  node-version: '18.x'
             - name: Checkout
               uses: actions/checkout@v3
             - name: Install dependencies
@@ -16,8 +16,6 @@ jobs:
                   # Define environment variables from GitHub Secrets for Cypress
             - name: Cypress run
               uses: cypress-io/github-action@v5
-              with:
-                  command: npm run e2e-regression
               env:
                   CYPRESS_TODOIST_EMAIL: ${{ secrets.TODOIST_EMAIL }}
                   CYPRESS_TODOIST_PASSWORD: ${{ secrets.TODOIST_PASSWORD }}

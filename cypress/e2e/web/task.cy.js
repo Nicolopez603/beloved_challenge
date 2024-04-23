@@ -3,7 +3,7 @@ import TodoistLoginPage from '../../support/pages/todoist-login'
 import TodoistTaskPage from '../../support/pages/todoist-task'
 import { faker } from '@faker-js/faker'
 
-describe('Login', () => {
+describe('Task Suite', () => {
     beforeEach(() => {
         cy.visit('auth/login')
         cy.location('protocol').should('contains', 'https')
