@@ -1,45 +1,40 @@
 /// <reference types="cypress" />
+import TodoistLoginPage from '../../support/pages/todoist-login'
 
 describe('Login', () => {
-    it('Succesfull Login', () => {
+    beforeEach(() => {
         cy.visit('auth/login')
-
-        cy.get('#element-0').type('elpepecoin@gmail.com')
-        cy.get('#element-3').type('elpepecoin998')
-        cy.get('._966b120f > .F9gvIPl').click()
+        cy.url().should('include', 'auth/login')
+    })
+    it('Succesfull Login', () => {
+        TodoistLoginPage.succesfullLogin()
 
         cy.url().should('include', '/app/today')
         cy.title().should('include', 'Hoy')
     })
 
     it('Invalid Login', () => {
-        cy.visit('/auth/login')
+        TodoistLoginPage.invalidLogin()
 
-        cy.get('#element-0').type('elpepecoin3@gmail.com')
-        cy.get('#element-3').type('elpepecoin998._."')
-        cy.get('._966b120f > .F9gvIPl').click()
+        //Alert-Error
         cy.get('._8f5b5f2b')
             .should('be.visible')
             .and('contain', 'Email o contraseña incorrectos.')
     })
 
     it('Invalid Login - No email', () => {
-        cy.visit('/auth/login')
+        TodoistLoginPage.invalidLoginWithoutEmail()
 
-        cy.get('#element-0')
-        cy.get('#element-3').type('elpepecoin998._."')
-        cy.get('._966b120f > .F9gvIPl').click()
+        //Alert-Error
         cy.get('._8f5b5f2b')
             .should('be.visible')
             .and('contain', 'Introduce una dirección de email válida.')
     })
 
     it('Invalid Login - No password', () => {
-        cy.visit('/auth/login')
+        TodoistLoginPage.invalidLoginWithoutPassword()
 
-        cy.get('#element-0').type('elpepecoin3@gmail.com')
-        cy.get('#element-3')
-        cy.get('._966b120f > .F9gvIPl').click()
+        //Alert-Error
         cy.get('._8f5b5f2b')
             .should('be.visible')
             .and(

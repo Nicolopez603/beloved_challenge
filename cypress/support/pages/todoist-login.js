@@ -1,13 +1,41 @@
-import { faker } from '@faker-js/faker'
-
 export default class TodoistLoginPage {
-    elements = {}
+    elements = {
+        emailInput: () => cy.get('#element-0'),
+        passwordInput: () => cy.get('#element-3'),
+        submitButton: () => cy.get('._966b120f > .F9gvIPl'),
+    }
 
     visit() {
         cy.visit('auth/login')
     }
 
-    Login() {}
+    succesfullLogin() {
+        this.elements.emailInput().type(Cypress.env('TODOIST_EMAIL'))
+        this.elements.passwordInput().type(Cypress.env('TODOIST_PASSWORD'))
+        this.elements.submitButton().click()
+    }
+
+    invalidLogin() {
+        this.elements.emailInput().type(Cypress.env('TODOIST_INVALID_EMAIL'))
+        this.elements
+            .passwordInput()
+            .type(Cypress.env('TODOIST_INVALID_PASSWORD'))
+        this.elements.submitButton().click()
+    }
+
+    invalidLoginWithoutEmail() {
+        this.elements.emailInput()
+        this.elements
+            .passwordInput()
+            .type(Cypress.env('TODOIST_INVALID_PASSWORD'))
+        this.elements.submitButton().click()
+    }
+
+    invalidLoginWithoutPassword() {
+        this.elements.emailInput().type(Cypress.env('TODOIST_INVALID_EMAIL'))
+        this.elements.passwordInput()
+        this.elements.submitButton().click()
+    }
 }
 
 module.exports = new TodoistLoginPage()
