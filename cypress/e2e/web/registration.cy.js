@@ -1,14 +1,13 @@
 /// <reference types="cypress" />
-import { faker } from '@faker-js/faker'
 import todoistRegistration from '../../support/pages/todoist-registration'
 
 describe('Registration', () => {
     beforeEach(() => {
         cy.visit('auth/signup')
         cy.url().should('include', 'auth/signup')
+        cy.location('protocol').should('contains', 'https')
     })
-    it('Successful registration', () => {
-        // Generating random data using faker
+    it('Complete Successful registration', () => {
         todoistRegistration.succesffullRegistration()
 
         //HomePage User
@@ -19,22 +18,35 @@ describe('Registration', () => {
     })
 
     it('Invalid registration', () => {
-        // Generating random data using faker
-        todoistRegistration.succesffullRegistration()
+        todoistRegistration.invalidRegistration()
 
-        //HomePage User
-        cy.url('include', '/app/today')
-
-        //Verify that you are on today's screen
-        cy.title().should('include', 'Hoy')
+        cy.title().should('include', 'Registrarme')
     })
 
-    it.only('Invalid registration', () => {
-        // Generating random data using faker
+    it('Invalid registration - No Password', () => {
         todoistRegistration.invalidRegistrationWithoutPassword()
+
         cy.get('#element-5').should(
             'contain.text',
             'Las contraseñas deben tener al menos 8 caracteres.'
+        )
+    })
+
+    it('Invalid registration - No email', () => {
+        todoistRegistration.invalidRegistrationWithoutEmail()
+
+        cy.get('._8f5b5f2b').should(
+            'contain.text',
+            'Introduce una dirección de email válida.'
+        )
+    })
+
+    it('Invalid Login - Without password and Email', () => {
+        todoistRegistration.invalidRegistrationWithoutPasswordAndEmail()
+
+        cy.get('#element-5').should(
+            'contain.text',
+            'Introduce una dirección de email válida.'
         )
     })
 })

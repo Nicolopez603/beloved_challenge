@@ -5,6 +5,7 @@ describe('Login', () => {
     beforeEach(() => {
         cy.visit('auth/login')
         cy.url().should('include', 'auth/login')
+        cy.location('protocol').should('contains', 'https')
     })
     it('Succesfull Login', () => {
         TodoistLoginPage.succesfullLogin()
@@ -43,7 +44,7 @@ describe('Login', () => {
             )
     })
 
-    it('Invalid Login - Without password and Email ', () => {
+    it('Invalid Login - Without password and Email', () => {
         TodoistLoginPage.invalidLoginWithoutPasswordAndEmail()
 
         //Alert-Error

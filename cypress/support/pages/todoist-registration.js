@@ -78,12 +78,24 @@ export default class thisPage {
         this.elements.submitButton().click()
     }
 
+    invalidRegistration() {
+        this.elements
+            .emailInput()
+            .type(Cypress.env('TODOIST_INVALID_EMAIL'), { log: false })
+        this.elements
+            .passwordInput()
+            .type(Cypress.env('TODOIST_INVALID_PASSWORD'), { log: false })
+        this.elements.submitButton().click()
+    }
+
     invalidRegistrationWithoutPasswordAndEmail() {
         this.elements.submitButton().click()
     }
 
     invalidRegistrationWithoutEmail() {
-        this.elements.passwordInput().type(randomPassword)
+        this.elements
+            .passwordInput()
+            .type(Cypress.env('TODOIST_INVALID_PASSWORD'), { log: false })
         this.elements.submitButton().click()
     }
 }
