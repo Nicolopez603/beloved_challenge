@@ -11,10 +11,7 @@ export default class TodoistTaskPage {
             cy.get(
                 '#task-7926729593 > .task_list_item__body > .c3b69d70 > .task_checkbox > .PtDaWGV'
             ),
-        completeTaskCheckbox: () =>
-            cy.get(
-                '#task-7926851087 > .task_list_item__body > .c3b69d70 > .task_checkbox > .PtDaWGV'
-            ),
+        completeTaskCheckbox: () => cy.get('span.PtDaWGV'),
     }
 
     createATask() {
@@ -24,7 +21,7 @@ export default class TodoistTaskPage {
     }
 
     markTaskAsComplete() {
-        this.elements.completeTaskCheckbox().click()
+        this.elements.completeTaskCheckbox().click({ multiple: true })
     }
 }
 

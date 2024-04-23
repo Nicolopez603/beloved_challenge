@@ -25,9 +25,18 @@ describe('Login', () => {
         cy.get('._1b5f8e86').should('contain.text', '1 tarea completada')
     })
 
-    describe('Complete Tasks', () => {
-        beforeEach(() => {
-            // ... tus comandos para iniciar sesión y preparar la prueba
+    it('marks all tasks as completed with one command', () => {
+        TodoistTaskPage.createATask()
+
+        // Select all of the elements 'checkbox'
+        cy.get('span.PtDaWGV').as('taskButtons')
+        cy.get('@taskButtons').then(($buttons) => {
+            //Click in each checkbox
+            $buttons.each((index, button) => {
+                cy.wrap(button).click()
+            })
         })
+
+        cy.get('._1b5f8e86').should('contain.text', '1 tarea completada')
     })
 })
