@@ -1,72 +1,73 @@
 on: push
 jobs:
-  install:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    install:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Cypress install
-        uses: cypress-io/github-action@v6
-        with:
-          runTests: false
-          build: npm run build
+            - name: Cypress install
+              uses: cypress-io/github-action@v6
+              with:
+                  runTests: false
+                  build: npm run build
 
-      - name: Save build folder
-        uses: actions/upload-artifact@v4
-        with:
-          name: build
-          path: dist
+            - name: Save build folder
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build
+                  path: dist
 
-  cypress-run:
-    needs: install
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        browsers: [
-          'chrome',
-          'firefox',
-          'electron',
-          'edge',
-          'node-20.0.0-chrome-110.0.5481.77-1-ff-110.0-edge-110.0.1587.50-1',
-        ]
-    container:
-      image: cypress/browsers:${{ matrix.browsers }}
-      options: --user 1001
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    cypress-run:
+        needs: install
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                browsers:
+                    [
+                        'chrome',
+                        'firefox',
+                        'electron',
+                        'edge',
+                        'node-20.0.0-chrome-110.0.5481.77-1-ff-110.0-edge-110.0.1587.50-1',
+                    ]
+        container:
+            image: cypress/browsers:${{ matrix.browsers }}
+            options: --user 1001
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      - name: Download the build folder
-        uses: actions/download-artifact@v4
-        with:
-          name: build
+            - name: Download the build folder
+              uses: actions/download-artifact@v4
+              with:
+                  name: build
 
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
-        with:
-          browser: ${{ matrix.browsers == 'chrome' ||
-            matrix.browsers == 'firefox' ||
-            matrix.browsers == 'edge' ||
-            matrix.browsers == 'electron' }}
-          command: npm run e2e-regression
-          record: true
-          parallel: true
-          group: 'UI Tests'
+            - name: Cypress run
+              uses: cypress-io/github-action@v6
+              with:
+                  browser: ${{ matrix.browsers == 'chrome' ||
+                      matrix.browsers == 'firefox' ||
+                      matrix.browsers == 'edge' ||
+                      matrix.browsers == 'electron' }}
+                  command: npm run e2e-regression
+                  record: true
+                  parallel: true
+                  group: 'UI Tests'
 
-      - name: Uploading artifact
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: cypress-execution-report
-          path: cypress/reports/html
-          retention-days: 30
+            - name: Uploading artifact
+              uses: actions/upload-artifact@v4
+              if: always()
+              with:
+                  name: cypress-execution-report
+                  path: cypress/reports/html
+                  retention-days: 30
 
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_USERNAME: nicomlopez3
-          SLACK_TITLE: Regression Test
-          SLACK_MESSAGE: "New changes :rocket:"
-          SLACK_COLOR: ${{ job.status }}
+            - name: Slack Notification
+              uses: rtCamp/action-slack-notify@v2
+              env:
+                  SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+                  SLACK_USERNAME: nicomlopez3
+                  SLACK_TITLE: Regression Test
+                  SLACK_MESSAGE: 'New changes :rocket:'
+                  SLACK_COLOR: ${{ job.status }}
