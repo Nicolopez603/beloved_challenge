@@ -95,7 +95,7 @@ This makes it easier to access and review test reports, allowing for more detail
 
 --------
 
-#### Si gustas de mas informacion sobre como se realizó, la arquitectura y más, puedes clickear [aqui](https://docs.google.com/document/d/12i3bVKRhPlC00CgISQyI5BF4v2iUh_NcuQMEiliHNX0/edit)
+#### If you would like more information about how it was made, the architecture and more, you can click here. [aqui](https://docs.google.com/document/d/12i3bVKRhPlC00CgISQyI5BF4v2iUh_NcuQMEiliHNX0/edit)
 
 -------
 
