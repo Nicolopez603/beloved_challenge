@@ -84,7 +84,7 @@ At the end of test execution in GitHub Actions, a notification is sent to a prev
 <img width="1037" alt="email-notify" src="https://github.com/Nicolopez603/beloved_challenge/assets/81532585/91a5ba37-9030-4c99-a547-8ba5d9c35d69">
 
 
-
+--------
 
 ### Test reports in Artifacts
 Test execution reports generated with the Mochawesome tool are stored as artifacts in GitHub Actions. These artifacts can be downloaded directly from the GitHub web interface or via command line commands.
@@ -93,6 +93,11 @@ This makes it easier to access and review test reports, allowing for more detail
 
 <img width="1375" alt="Captura de pantalla 2024-04-24 a la(s) 17 47 55" src="https://github.com/Nicolopez603/beloved_challenge/assets/81532585/07a3fef4-4e74-4e14-b41a-4818e6e1e456">
 
+--------
+
+#### Si gustas de mas informacion sobre como se realizó, la arquitectura y más, puedes clickear [aqui](https://docs.google.com/document/d/12i3bVKRhPlC00CgISQyI5BF4v2iUh_NcuQMEiliHNX0/edit)
+
+-------
 
 ### Credits
 
