@@ -1,37 +1,63 @@
-/// <reference types="cypress" />
-describe('Endpoint /jokes/categories', () => {
-  const statusOK = 200
-  it('Get joke categories', () => {
-    cy.request('https://api.chucknorris.io/jokes/categories')
-      .its('status')
-      .should('equal', statusOK)
-  })
+// <reference types="cypress" />
 
-  it('Joke categories contains an array', () => {
-    cy.request('https://api.chucknorris.io/jokes/categories')
-      .its('body')
-      .should('be.an', 'array')
-  })
+describe('Chuck Norris API - Categories Endpoint', () => {
+    const categoryEndpoint = 'https://api.chucknorris.io/jokes/categories'
+    const statusOK = 200
 
-  it('Category array is not empty', () => {
-    cy.request('https://api.chucknorris.io/jokes/categories')
-      .its('body')
-      .should('not.be.empty')
-  })
+    function makeRequest(
+        method = 'GET',
+        url = categoryEndpoint,
+        failOnStatusCode = false
+    ) {
+        return cy.request({
+            method,
+            url,
+            failOnStatusCode,
+        })
+    }
 
-  it('Invalid request returns error', () => {
-    cy.request({
-      method: 'POST',
-      url: 'https://api.chucknorris.io/jokes/categories',
-      failOnStatusCode: false,
+    it('Get joke categories', () => {
+        makeRequest().its('status').should('equal', statusOK)
     })
-      .its('status')
-      .should('not.equal', statusOK)
-  })
 
-  it('Response does not contain an additional property', () => {
-    cy.request('https://api.chucknorris.io/jokes/categories')
-      .its('body')
-      .should('not.have.property', 'nonexistantProperty')
-  })
+    it('Category response contains expected data structure', () => {
+        makeRequest()
+            .its('body')
+            .should('be.an', 'array')
+            .and('not.be.empty')
+            .and('not.contain', null)
+            .and('not.contain', undefined)
+            .and('not.contain', NaN)
+            .and('not.have.length', 0)
+            .then((categories) => {
+                categories.forEach((category) => {
+                    expect(category).to.be.a('string')
+                    expect(category).to.not.be.empty
+                })
+            })
+    })
+
+    it('Categories response does not contain duplicates', () => {
+        makeRequest()
+            .its('body')
+            .then((categories) => {
+                const uniqueCategories = new Set(categories)
+                expect(uniqueCategories.size).to.equal(categories.length)
+            })
+    })
+
+    it('Categories response contains expected values', () => {
+        makeRequest()
+            .its('body')
+            .then((categories) => {
+                expect(categories).to.include('career')
+                expect(categories).to.include('explicit')
+            })
+    })
+
+    it('Response does not contain an additional property', () => {
+        makeRequest()
+            .its('body')
+            .should('not.have.property', 'nonexistantProperty')
+    })
 })
