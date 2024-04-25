@@ -93,12 +93,19 @@ This makes it easier to access and review test reports, allowing for more detail
 
 <img width="1375" alt="Captura de pantalla 2024-04-24 a la(s) 17 47 55" src="https://github.com/Nicolopez603/beloved_challenge/assets/81532585/07a3fef4-4e74-4e14-b41a-4818e6e1e456">
 
---------
+---
 
-#### If you would like more information about how it was made, the architecture and more, you can click here. [aqui](https://docs.google.com/document/d/12i3bVKRhPlC00CgISQyI5BF4v2iUh_NcuQMEiliHNX0/edit)
+### a brief summary of headless mode testing and documentation
+
+
+
+https://github.com/Nicolopez603/beloved_challenge/assets/81532585/11a78df3-c687-4716-b183-7a2526028637
+
+
+
+https://github.com/Nicolopez603/beloved_challenge/assets/81532585/334c7dfa-658a-4703-8c10-14217008d53d
 
 -------
 
-### Credits
-
-[![Cypress.io](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)](https://www.cypress.io/)
+### If you would like more information about how it was made, the architecture and more, you can click here. 
+[HERE](https://docs.google.com/document/d/12i3bVKRhPlC00CgISQyI5BF4v2iUh_NcuQMEiliHNX0/edit)
