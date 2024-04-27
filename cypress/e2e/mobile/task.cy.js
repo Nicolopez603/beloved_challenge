@@ -1,12 +1,13 @@
 /// <reference types="cypress" />
-import TodoistLoginPage from '../../support/pages/web/todoist-login'
-import TodoistTaskPage from '../../support/pages/web/todoist-task'
+import TodoistLoginPage from '../../support/pages/mobile/todoist-login'
+import TodoistTaskPage from '../../support/pages/mobile/todoist-task'
 
 describe('Task Suite', () => {
     beforeEach(() => {
         cy.visit('auth/login')
         cy.location('protocol').should('contains', 'https')
         TodoistLoginPage.succesfullLogin()
+        cy.viewport('iphone-xr')
     })
     it('Create a task', () => {
         TodoistTaskPage.createATask()

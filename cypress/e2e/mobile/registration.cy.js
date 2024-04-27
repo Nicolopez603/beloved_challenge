@@ -1,10 +1,11 @@
 /// <reference types="cypress" />
-import todoistRegistration from '../../support/pages/web/todoist-registration'
+import todoistRegistration from '../../support/pages/mobile/todoist-registration'
 
 describe('Registration Suite', () => {
     beforeEach(() => {
         cy.visit('auth/signup')
         cy.location('protocol').should('contains', 'https')
+        cy.viewport('iphone-xr')
     })
     it('Complete Successful registration', () => {
         todoistRegistration.succesffullRegistration()

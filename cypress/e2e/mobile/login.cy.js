@@ -1,10 +1,11 @@
 /// <reference types="cypress" />
-import TodoistLoginPage from '../../support/pages/web/todoist-login'
+import TodoistLoginPage from '../../support/pages/mobile/todoist-login'
 
 describe('Login Suite', () => {
     beforeEach(() => {
         cy.visit('auth/login')
         cy.location('protocol').should('contains', 'https')
+        cy.viewport('iphone-xr')
     })
     it('Succesfull Login', () => {
         TodoistLoginPage.succesfullLogin()
