@@ -15,6 +15,7 @@
         "api-regression-electron": "cypress run --browser electron --spec 'cypress/e2e/api/*.cy.js'",
         "open-chrome": "cypress open --browser chrome --config-file cypress.config.js --e2e",
         "open-electron": "cypress open --browser electron --config-file cypress.config.js --e2e",
+        "ui-smoke": "npx cypress run --env configFile=cypress.production.json grepTags=@smoke",
         "e2e-regression": "npm run ui-regression-electron && npm run api-regression-chrome && npm run ui-regression-mobile-chrome",
         "runner-in-prod": "cypress run --browser electron --spec 'cypress/e2e/web/*.cy.js' --env configFile=cypress.production.json",
         "runner-in-dev": "cypress run --browser chrome --spec 'cypress/e2e/web/*.cy.js' --env configFile=cypress.development.json",

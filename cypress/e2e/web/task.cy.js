@@ -2,7 +2,7 @@
 import TodoistLoginPage from '../../support/pages/web/todoist-login'
 import TodoistTaskPage from '../../support/pages/web/todoist-task'
 
-describe('Task Suite', () => {
+describe('Task Suite', { tags: '@smoke' }, () => {
     beforeEach(() => {
         cy.visit('auth/login')
         cy.location('protocol').should('contains', 'https')

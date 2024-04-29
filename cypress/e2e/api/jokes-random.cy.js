@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Endpoint /jokes/random', () => {
+describe('Endpoint /jokes/random', { tags: '@smoke' }, () => {
     const statusOK = 200
 
     it('Get a random joke', () => {

@@ -10,6 +10,7 @@ module.exports = defineConfig({
         setupNodeEvents(on, config) {
             const env = process.env.NODE_ENV || 'production'
             const envConfig = require(`./cypress/config/${env}`)
+            require('@cypress/grep/src/plugin')(config)
             config = {
                 ...config,
                 ...envConfig,

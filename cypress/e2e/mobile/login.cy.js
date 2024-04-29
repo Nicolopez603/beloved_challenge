@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import TodoistLoginPage from '../../support/pages/mobile/todoist-login'
 
-describe('Login Suite', () => {
+describe('Login Suite', { tags: '@smoke' }, () => {
     beforeEach(() => {
         cy.visit('auth/login')
         cy.location('protocol').should('contains', 'https')

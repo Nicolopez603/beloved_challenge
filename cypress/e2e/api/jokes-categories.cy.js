@@ -1,6 +1,6 @@
 // <reference types="cypress" />
 
-describe('Chuck Norris API - Categories Endpoint', () => {
+describe('Chuck Norris API - Categories Endpoint', { tags: '@smoke' }, () => {
     const categoryEndpoint = 'https://api.chucknorris.io/jokes/categories'
     const statusOK = 200
 

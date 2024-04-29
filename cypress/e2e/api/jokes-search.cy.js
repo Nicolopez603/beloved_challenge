@@ -4,7 +4,7 @@ const statusOK = 200
 describe('Endpoint /jokes/search', () => {
     const searchQuery = faker.lorem.words(2)
 
-    it('Search jokes by query', () => {
+    it('Search jokes by query', { tags: '@smoke' }, () => {
         cy.request(
             `https://api.chucknorris.io/jokes/search?query=${searchQuery}`
         )
