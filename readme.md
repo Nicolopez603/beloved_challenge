@@ -30,10 +30,10 @@ npm install
 Create a cypress.env.json file in the root of the project and add the following environment variables with your Todoist credentials:
 
 ```bash
-TODOIST_EMAIL=tu_email@example.com
-TODOIST_PASSWORD=tu_contraseña
-TODOIST_INVALID_EMAIL=email_invalido@example.com
-TODOIST_INVALID_PASSWORD=contraseña_invalida
+TODOIST_EMAIL=your_email@example.com
+TODOIST_PASSWORD=your_password
+TODOIST_INVALID_EMAIL=invalid_email@example.com
+TODOIST_INVALID_PASSWORD=invalid_password
 ```
 
 ### **TEST EXECUTION**
@@ -95,7 +95,7 @@ This makes it easier to access and review test reports, allowing for more detail
 
 ---
 
-### a brief summary of headless mode testing and documentation
+### A brief summary of headless mode testing and documentation
 
 
 
@@ -107,5 +107,7 @@ https://github.com/Nicolopez603/beloved_challenge/assets/81532585/334c7dfa-658a-
 
 -------
 
-### If you would like more information about how it was made, the architecture and more, you can click here. 
+### About the Architecture and How is structured the project
+
+If you would like more information about how it was made, the architecture and more, you can click here. 
 [HERE](https://docs.google.com/document/d/12i3bVKRhPlC00CgISQyI5BF4v2iUh_NcuQMEiliHNX0/edit)
