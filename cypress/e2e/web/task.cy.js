@@ -6,7 +6,7 @@ describe('Task Suite', { tags: '@smoke' }, () => {
     beforeEach(() => {
         cy.visit('auth/login')
         cy.location('protocol').should('contains', 'https')
-        TodoistLoginPage.succesfullLogin()
+        cy.guiLogin()
     })
     it('Create a task', () => {
         TodoistTaskPage.createATask()

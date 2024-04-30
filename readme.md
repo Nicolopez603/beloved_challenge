@@ -30,10 +30,12 @@ npm install
 Create a cypress.env.json file in the root of the project and add the following environment variables with your Todoist credentials:
 
 ```bash
-TODOIST_EMAIL=your_email@example.com
-TODOIST_PASSWORD=your_password
-TODOIST_INVALID_EMAIL=invalid_email@example.com
-TODOIST_INVALID_PASSWORD=invalid_password
+{
+"TODOIST_EMAIL": "your_email@example.com",
+"TODOIST_PASSWORD": "your_password",
+"TODOIST_INVALID_EMAIL":"invalid_email@example.com",
+"TODOIST_INVALID_PASSWORD":"invalid_password"
+}
 ```
 
 ### **TEST EXECUTION**

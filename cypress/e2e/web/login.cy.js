@@ -16,6 +16,12 @@ describe('Login Suite', { tags: '@smoke' }, () => {
         cy.get('._966b120f > .F9gvIPl').should('be.visible')
     })
 
+    it('Forgot password?', () => {
+        cy.contains('¿Olvidaste tu contraseña?').click()
+
+        cy.get('.F9gvIPl').should('be.visible')
+    })
+
     it('Invalid Login - No email', () => {
         TodoistLoginPage.invalidLoginWithoutEmail()
 
